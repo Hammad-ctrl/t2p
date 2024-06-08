@@ -6,8 +6,8 @@ import { isAuthenticated } from '../../../utils/Auth';
 
 // Dynamically import the JoditEditor to avoid server-side rendering issues
 const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
-// const url = 'http://www.t2p.vercel.app';
-const url = 'http://localhost:3000';
+const url = 'http://www.t2p.vercel.app';
+// const url = 'http://localhost:3000';
 
 
 
@@ -27,7 +27,7 @@ function Page() {
   useEffect(() => {
     const deleteFiles = async () => {
       try {
-       let res = await fetch("/api/delete-files", {
+       let res = await fetch(`${url}/api/delete-files`, {
           method: 'DELETE'
         });
         res =await res.json();
@@ -67,7 +67,7 @@ function Page() {
     }
 
     try {
-      const response = await fetch("/api/generate-pdf", {
+      const response = await fetch(`${url}/api/generate-pdf`, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain'
